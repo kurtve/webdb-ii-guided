@@ -1,22 +1,22 @@
-const express = require("express")
-const helmet = require("helmet")
-const fruitsRouter = require("./fruits/fruits-router")
+const express = require('express');
+const helmet = require('helmet');
+const fruitsRouter = require('./fruits/fruits-router');
 
-const server = express()
-const host = process.env.HOST || "localhost"
-const port = process.env.PORT || 5000
+const server = express();
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 5000;
 
-server.use(helmet())
-server.use(express.json())
+server.use(helmet());
+server.use(express.json());
 
-server.use("/api/fruits", fruitsRouter)
+server.use('/api/fruits', fruitsRouter);
 server.use((err, req, res, next) => {
-	console.log(err)
-	res.status(500).json({
-		message: "Something went wrong",
-	})
-})
+  console.log(err);
+  res.status(500).json({
+    message: 'Something went wrong',
+  });
+});
 
 server.listen(port, host, () => {
-	console.log(`\nRunning on http://${host}:${port}\n`)
-})
+  console.log(`\nRunning on http://${host}:${port}\n`);
+});
